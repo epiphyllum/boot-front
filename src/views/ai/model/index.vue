@@ -55,9 +55,9 @@ import { reactive, nextTick, ref, toRefs } from "vue";
 import AddOrUpdate from "./add-or-update.vue";
 
 const view = reactive({
-  getDataListURL: "/sys/ai/model/page",
+  getDataListURL: "/ai/model/page",
   getDataListIsPage: true,
-  deleteURL: "/sys/ai/model",
+  deleteURL: "/ai/model",
   deleteIsBatch: true,
   dataForm: {
     platform: "",

@@ -49,9 +49,9 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 const view = reactive({
-  getDataListURL: "/sys/mp/account/page",
+  getDataListURL: "/mp/account/page",
   getDataListIsPage: true,
-  deleteURL: "/sys/mp/account",
+  deleteURL: "/mp/account",
   deleteIsBatch: true,
   dataForm: {
     name: "",
@@ -62,7 +62,7 @@ const view = reactive({
 const state = reactive({ ...useView(view), ...toRefs(view) });
 
 const mpHandle = (appId: any) => {
-  ElMessageBox.alert(app.api + "/sys/mp/portal/" + appId, "公众号配置的URL", {
+  ElMessageBox.alert(app.api + "/mp/portal/" + appId, "公众号配置的URL", {
     confirmButtonText: t("confirm")
   });
 };

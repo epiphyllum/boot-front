@@ -47,9 +47,9 @@ import GeneratorMenu from "./generator-menu.vue";
 import { IObject } from "@/types/interface";
 
 const view = reactive({
-  getDataListURL: "/devtools/table/page",
+  getDataListURL: "/devtool/table/page",
   getDataListIsPage: true,
-  deleteURL: "/devtools/table",
+  deleteURL: "/devtool/table",
   deleteIsBatch: true,
   importVisible: false,
   editTableVisible: false,

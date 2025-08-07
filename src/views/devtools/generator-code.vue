@@ -136,13 +136,13 @@ const init = (id: string) => {
 };
 
 const getBaseClassList = () => {
-  baseService.get("/devtools/baseclass/list").then((res) => {
+  baseService.get("/devtool/baseclass/list").then((res) => {
     baseClassList.value = res.data;
   });
 };
 
 const getTableInfo = (id: string) => {
-  baseService.get("/devtools/table/" + id).then((res) => {
+  baseService.get("/devtool/table/" + id).then((res) => {
     Object.assign(dataForm, res.data);
   });
 };
@@ -153,7 +153,7 @@ const dataFormSubmitHandle = () => {
     if (!valid) {
       return false;
     }
-    baseService.put("/devtools/table", dataForm).then(() => {
+    baseService.put("/devtool/table", dataForm).then(() => {
       ElMessage.success({
         message: t("prompt.success"),
         duration: 500,
@@ -172,7 +172,7 @@ const generatorCodeHandle = () => {
     if (!valid) {
       return false;
     }
-    baseService.post("/devtools/generator", dataForm).then(() => {
+    baseService.post("/devtool/generator", dataForm).then(() => {
       ElMessage.success({
         message: t("prompt.success"),
         duration: 500,

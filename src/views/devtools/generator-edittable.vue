@@ -142,13 +142,13 @@ const rowDrop = () => {
 };
 
 const getTable = (id: string) => {
-  baseService.get("/devtools/table/" + id).then((res) => {
+  baseService.get("/devtool/table/" + id).then((res) => {
     tableData.value = res.data.fields;
   });
 };
 
 const getAttrTypeList = () => {
-  baseService.get("/devtools/fieldtype/list").then((res) => {
+  baseService.get("/devtool/fieldtype/list").then((res) => {
     typeList.value = [];
     // 设置属性类型值
     res.data.forEach((item: IObject) => typeList.value.push({ label: item, value: item }));
@@ -158,7 +158,7 @@ const getAttrTypeList = () => {
 };
 
 const getDictList = () => {
-  baseService.get("/devtools/dict").then((res) => {
+  baseService.get("/devtool/dict").then((res) => {
     dictList.value = [];
     dictList.value.push({ label: "", value: "" });
     res.data.forEach((item: IObject) => dictList.value.push({ label: item.dictType, value: item.dictType }));
@@ -167,7 +167,7 @@ const getDictList = () => {
 
 // 修改
 const updateHandle = () => {
-  baseService.put("/devtools/table/field/" + tableId.value, tableData.value).then(() => {
+  baseService.put("/devtool/table/field/" + tableId.value, tableData.value).then(() => {
     ElMessage.success({
       message: t("prompt.success"),
       duration: 500,

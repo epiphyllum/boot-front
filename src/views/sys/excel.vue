@@ -19,9 +19,22 @@
       <el-form-item>
         <el-button type="warning" @click="importHandle()">{{ $t("excel.import") }}</el-button>
       </el-form-item>
+
       <el-form-item>
         <el-button type="info" @click="state.exportHandle()">{{ $t("export") }}</el-button>
       </el-form-item>
+
+      <!-- 测试通过权限调用magic-api  -->
+      <el-form-item>
+        <el-button type="info" @click="testMagicApi()">调用magicApi</el-button>
+      </el-form-item>
+
+      <!-- 测试通过权限调用magic-api + APIJSON -->
+      <el-form-item>
+        <el-button type="info" @click="testAPIJSON()">调用ApiJSON</el-button>
+      </el-form-item>
+
+
     </el-form>
     <el-table v-loading="state.dataListLoading" :data="state.dataList" border @selection-change="state.dataListSelectionChangeHandle" style="width: 100%">
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
@@ -73,4 +86,23 @@ const addOrUpdateRef = ref();
 const addOrUpdateHandle = (id?: number) => {
   addOrUpdateRef.value.init(id);
 };
+
+import baseService from "@/service/baseService";
+import { ElMessageBox } from "element-plus";
+
+const testMagicApi = () => {
+  baseService.get("/magic/api/user/callUser", {}).then((t) => {
+    ElMessageBox.alert(t)
+    //
+  });
+}
+
+const testAPIJSON = () => {
+  baseService.get("/magic/api/user/callAPIJSON", {}).then((t) => {
+    ElMessageBox.alert(t)
+    //
+  });
+}
+
+
 </script>

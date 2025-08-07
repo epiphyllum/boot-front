@@ -58,9 +58,9 @@ import AddOrUpdate from "./datasource-add-or-update.vue";
 import { ElMessage } from "element-plus";
 
 const view = reactive({
-  getDataListURL: "/devtools/datasource/page",
+  getDataListURL: "/devtool/datasource/page",
   getDataListIsPage: true,
-  deleteURL: "/devtools/datasource",
+  deleteURL: "/devtool/datasource",
   deleteIsBatch: true,
   dataForm: {
     connName: "",
@@ -71,7 +71,7 @@ const view = reactive({
 const state = reactive({ ...useView(view), ...toRefs(view) });
 
 const datasourceHandle = (id: string) => {
-  baseService.get("/devtools/datasource/test/" + id).then((res) => {
+  baseService.get("/devtool/datasource/test/" + id).then((res) => {
     if (res.code !== 0) {
       return ElMessage.error(res.msg);
     } else {

@@ -47,7 +47,7 @@ const currentChatIndex = ref(0);
 const chatSessions = ref<{ id: number; modelId: number; title: string }[]>([]);
 
 // 初始化聊天会话
-baseService.get("/sys/ai/chat/conversation/list").then((res: any) => {
+baseService.get("/ai/chat/conversation/list").then((res: any) => {
   chatSessions.value = res.data;
 
   switchChat(chatSessions.value[0], 0);
@@ -60,7 +60,7 @@ const deleteChat = (chat: any, index: number) => {
     cancelButtonText: "取消",
     type: "warning"
   }).then(() => {
-    baseService.delete("/sys/ai/chat/conversation", [chat.id]).then(() => {
+    baseService.delete("/ai/chat/conversation", [chat.id]).then(() => {
       chatSessions.value.splice(index, 1);
       // 如果删除的是当前选中的对话，则切换到第一个对话
       if (currentChatIndex.value === index) {
@@ -84,7 +84,7 @@ const editChatTitle = (id: number, index: number) => {
     cancelButtonText: "取消",
     inputValue: chatSessions.value[index].title
   }).then(({ value }) => {
-    baseService.put("/sys/ai/chat/conversation", { id, title: value }).then(() => {
+    baseService.put("/ai/chat/conversation", { id, title: value }).then(() => {
       chatSessions.value[index].title = value;
     });
   });
@@ -92,7 +92,7 @@ const editChatTitle = (id: number, index: number) => {
 
 // 创建新对话
 const createNewChat = () => {
-  baseService.post("/sys/ai/chat/conversation", { title: "新对话" }).then((res: any) => {
+  baseService.post("/ai/chat/conversation", { title: "新对话" }).then((res: any) => {
     chatSessions.value.unshift({
       id: res.data.id,
       modelId: res.data.modelId,

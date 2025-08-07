@@ -61,7 +61,7 @@ onMounted(() => {
 });
 
 const getGenParam = () => {
-  baseService.get("/devtools/param/info").then((res) => {
+  baseService.get("/devtool/param/info").then((res) => {
     Object.assign(param, res.data);
   });
 };

@@ -65,7 +65,7 @@ const init = () => {
 
 // 获取数据源
 const getDataSource = () => {
-  baseService.get("/devtools/datasource/list").then((res) => {
+  baseService.get("/devtool/datasource/list").then((res) => {
     dataForm.datasourceList = res.data;
   });
 };
@@ -75,7 +75,7 @@ const getTableInfoList = () => {
   dataForm.showTableSelect = false;
   dataForm.tableInfo.tableName = "";
 
-  baseService.get("/devtools/datasource/table/list/" + dataForm.datasourceId).then((res) => {
+  baseService.get("/devtool/datasource/table/list/" + dataForm.datasourceId).then((res) => {
     dataForm.tableInfoList = res.data;
     dataForm.showTableSelect = true;
   });
@@ -87,7 +87,7 @@ const dataFormSubmitHandle = () => {
     if (!valid) {
       return false;
     }
-    (!dataForm.id ? baseService.post : baseService.put)("/devtools/datasource/table", dataForm.tableInfo).then(() => {
+    (!dataForm.id ? baseService.post : baseService.put)("/devtool/datasource/table", dataForm.tableInfo).then(() => {
       ElMessage.success({
         message: t("prompt.success"),
         duration: 500,

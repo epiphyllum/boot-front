@@ -33,7 +33,7 @@ import useView from "@/hooks/useView";
 import { reactive, toRefs } from "vue";
 
 const view = reactive({
-  getDataListURL: "/sys/pay/alipayNotifyLog/page",
+  getDataListURL: "/payment/pay/alipayNotifyLog/page",
   getDataListIsPage: true,
   deleteIsBatch: true,
   dataForm: {

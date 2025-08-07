@@ -326,7 +326,7 @@ export default defineComponent({
       this.getMenu(this.appId);
     },
     getMenu(appId) {
-      baseService.get("/sys/mp/menu/" + appId).then((res) => {
+      baseService.get("/mp/menu/" + appId).then((res) => {
         if (res.data == null) {
           this.menu = JSON.parse('{"button":[]}');
         } else {
@@ -335,7 +335,7 @@ export default defineComponent({
       });
     },
     init() {
-      baseService.get("/sys/mp/account/page").then((res) => {
+      baseService.get("/mp/account/page").then((res) => {
         this.data = res.data.list;
 
         // 选中第一个
@@ -559,7 +559,7 @@ export default defineComponent({
     getMaterial(mediaId) {
       this.materialLoading = true;
 
-      baseService.get("/sys/mp/material/get", { appId: this.appId, mediaId: mediaId }).then((res) => {
+      baseService.get("/mp/material/get", { appId: this.appId, mediaId: mediaId }).then((res) => {
         this.material.title = res.data.articles[0].title;
         this.material.url = res.data.articles[0].url;
       });
@@ -570,7 +570,7 @@ export default defineComponent({
         return;
       }
 
-      baseService.get("/sys/mp/material/page", { appId: this.appId, type: "news", offset: this.newsListOffset, limit: 10 }).then((res) => {
+      baseService.get("/mp/material/page", { appId: this.appId, type: "news", offset: this.newsListOffset, limit: 10 }).then((res) => {
         this.newsList = this.newsList.concat(res.data.list);
         this.newsListOffset += res.data.list.length;
         this.newsListTotal = res.data.total;
@@ -581,7 +581,7 @@ export default defineComponent({
         return;
       }
 
-      baseService.get("/sys/mp/material/page", { appId: this.appId, type: "news", offset: this.materialListOffset, limit: 10 }).then((res) => {
+      baseService.get("/mp/material/page", { appId: this.appId, type: "news", offset: this.materialListOffset, limit: 10 }).then((res) => {
         this.materialList = this.materialList.concat(res.data.list);
         this.materialListOffset += res.data.list.length;
         this.materialListTotal = res.data.total;
@@ -593,7 +593,7 @@ export default defineComponent({
       const dataForm = {};
       dataForm.appId = this.appId;
       dataForm.menu = JSON.stringify(this.menu);
-      baseService.post("/sys/mp/menu/" + this.appId, dataForm).then(() => {
+      baseService.post("/mp/menu/" + this.appId, dataForm).then(() => {
         ElMessage.success({
           message: this.$t("prompt.success"),
           duration: 500,
@@ -608,7 +608,7 @@ export default defineComponent({
     async onMenuClear() {
       try {
         await ElMessageBox.confirm("确定后将清空后公众号自定义菜单", "提示");
-        baseService.delete("/sys/mp/menu/" + this.appId).then(() => {
+        baseService.delete("/mp/menu/" + this.appId).then(() => {
           ElMessage.success({
             message: this.$t("prompt.success"),
             duration: 500,

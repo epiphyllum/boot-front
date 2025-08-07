@@ -42,9 +42,9 @@ import { reactive, ref, toRefs } from "vue";
 import AddOrUpdate from "./fieldtype-add-or-update.vue";
 
 const view = reactive({
-  getDataListURL: "/devtools/fieldtype/page",
+  getDataListURL: "/devtool/fieldtype/page",
   getDataListIsPage: true,
-  deleteURL: "/devtools/fieldtype",
+  deleteURL: "/devtool/fieldtype",
   deleteIsBatch: true,
   dataForm: {
     columnType: "",
