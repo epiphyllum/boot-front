@@ -55,9 +55,9 @@ import QrcodeVue from 'qrcode.vue'
 import baseService from "@/service/baseService";
 
 const view = reactive({
-  getDataListURL: "/payment/pay/order/page",
+  getDataListURL: "/pay/order/page",
   getDataListIsPage: true,
-  deleteURL: "/payment/pay/order",
+  deleteURL: "/pay/order",
   deleteIsBatch: true,
   dataForm: {
     orderId: "",
@@ -69,14 +69,14 @@ const view = reactive({
 const state = reactive({ ...useView(view), ...toRefs(view) });
 
 const payHandle = (orderId: string) => {
-  window.open(`${app.api}/payment/pay/alipay/webPay?orderId=` + orderId);
+  window.open(`${app.api}/pay/alipay/webPay?orderId=` + orderId);
 };
 
 
 const weChatVisible = ref(false)
 const codeUrl = ref('')
 const weChatHandle = (orderId: string) => {
-  baseService.get(`/payment/pay/wechat/nativePay?orderId=${orderId}`).then(res => {
+  baseService.get(`/pay/wechat/nativePay?orderId=${orderId}`).then(res => {
     codeUrl.value = res.data
     weChatVisible.value = true
   })
